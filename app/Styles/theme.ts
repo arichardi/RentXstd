@@ -23,7 +23,7 @@ export default {
     },
     fonts : {
         primary400: "Inter_400Regular",
-        primary00: "Inter_500Medium",
+        primary500: "Inter_500Medium",
         secondary400: "Archivo_400Regular",
         secondary500: "Archivo_500Medium",
         secondary600: "Archivo_600SemiBold",
