@@ -11,8 +11,11 @@ import {
 import Car from '../Components/Car'
 
 import Logo from '../assets/logo.svg'
+import { useNavigation } from '@react-navigation/core'
 
 export default function HomeScreen(){
+
+    const navigation = useNavigation()
 
     const CarData = {
         brand: 'audi',
@@ -31,6 +34,12 @@ export default function HomeScreen(){
             price: 350,
         },
         thumbnail: 'https://www.webmotors.com.br/imagens/prod/347468/PORSCHE_PANAMERA_2.9_V6_EHYBRID_4_PDK_3474681900348621.png?s=fill&w=130&h=97&q=70&t=true)'
+    }
+
+    //functions
+
+    function handleCarDetails(){
+        navigation.navigate('CarDetails')
     }
 
     return (
@@ -53,7 +62,9 @@ export default function HomeScreen(){
             <CarList 
                 data={[1,2,3,4 ,5 ,6, 7]}
                 keyExtractor={ item => String(item)}
-                renderItem={ ({item}) => <Car data={CarData} />}
+                renderItem={ ({item}) => <Car data={CarData} 
+                onPress={handleCarDetails}
+                />}
             />
 
         </Container>

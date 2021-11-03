@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/core';
 import { Feather } from '@expo/vector-icons'
 import {
 Container,
@@ -40,6 +41,13 @@ import Acessory from '../Components/Acessory';
 import Button from '../Components/Button';
 
 export default function ScheduleDetailsScreen(){
+
+const navigation = useNavigation()
+
+function handleConfirmRental(){
+    navigation.navigate('ScheduleComplete')
+}
+
 return (
 <Container>
     <Header>
@@ -112,8 +120,9 @@ return (
 
     <Footer>
         <Button 
-        title='Confirmar'
-        onPress={ () => {}}
+        title='Alugar agora'
+        onPress={handleConfirmRental}
+        color={theme.colors.success}
         />
     </Footer>
 

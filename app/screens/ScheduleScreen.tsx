@@ -16,8 +16,16 @@ Footer,
 import ArrowSvg from '../assets/arrow.svg'
 import Button from '../Components/Button';
 import Calendar from '../Components/Calendar'
+import { useNavigation } from '@react-navigation/core';
 
 export default function ScheduleScreen(){
+
+    const navigation = useNavigation()
+
+    function handleConfirmRental(){
+        navigation.navigate('ScheduleDetails')
+    }
+
 return (
 <Container>
     <Header>
@@ -54,8 +62,8 @@ return (
 
     <Footer>
         <Button 
-            title='Confirmar'
-            onPress={ () => {}}
+            title='Escolher período do aluguel'
+            onPress={handleConfirmRental}
         />
     </Footer>
 </Container>

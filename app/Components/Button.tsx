@@ -1,7 +1,9 @@
 import React from 'react';
+import theme from '../Styles/theme';
 import {
 Container,
 Title,
+
 } from './ButtonStyle'
 
 interface Props {
@@ -10,11 +12,13 @@ interface Props {
     onPress: () => void;
 }
 
-export default function Button({title, color, ...rest}: Props){
+export default function Button({title, color , onPress, ...rest}: Props){
 return (
 
-<Container {...rest} color={color}>
+<Container onPress={onPress} color={color ? color : theme.colors.main} {...rest}>
+    
     <Title>{title}</Title>
+
 </Container>
 );
 }

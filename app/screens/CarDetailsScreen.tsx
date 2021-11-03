@@ -27,8 +27,16 @@ import BackButton from '../Components/BackButton';
 import ImageSlider from '../Components/ImageSlider';
 import Acessory from '../Components/Acessory';
 import Button from '../Components/Button';
+import { useNavigation } from '@react-navigation/core';
 
 export default function CarDetailsScreen(){
+
+const navigation = useNavigation();
+
+function handleConfirmRental(){
+    navigation.navigate('Schedule')
+}
+
 return (
 <Container>
     <Header>
@@ -73,7 +81,7 @@ return (
     <Footer>
         <Button 
         title='Confirmar'
-        onPress={ () => {}}
+        onPress={handleConfirmRental}
         />
     </Footer>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import AppLoading from 'expo-app-loading';
+import { NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from 'styled-components'
 import {
   useFonts,
@@ -12,12 +13,9 @@ import {
   Archivo_600SemiBold
 }  from '@expo-google-fonts/archivo'
 
-import HomeScreen from './app/screens/HomeScreen';
 import theme from './app/Styles/theme';
-import CarDetailsScreen from './app/screens/CarDetailsScreen';
-import ScheduleScreen from './app/screens/ScheduleScreen'
-import ScheduleDetailsScreen from './app/screens/ScheduleDetailsScreen'
-import ScheduleCompleteScreen from './app/screens/ScheduleCompleteScreen'
+import Routes from './app/Routes/Routes';
+
 
 
 export default function App() {
@@ -37,7 +35,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <ScheduleCompleteScreen />
+      <Routes />
     </ThemeProvider>
     );
 }
