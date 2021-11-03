@@ -15,6 +15,7 @@ Footer,
 } from './ScheduleScreenStyle'
 import ArrowSvg from '../assets/arrow.svg'
 import Button from '../Components/Button';
+import Calendar from '../Components/Calendar'
 
 export default function ScheduleScreen(){
 return (
@@ -48,7 +49,7 @@ return (
     </Header>
 
     <Content>
-
+        <Calendar />
     </Content>
 
     <Footer>
