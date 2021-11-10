@@ -27,54 +27,65 @@ import BackButton from '../Components/BackButton';
 import ImageSlider from '../Components/ImageSlider';
 import Acessory from '../Components/Acessory';
 import Button from '../Components/Button';
-import { useNavigation } from '@react-navigation/core';
+import { useNavigation, useRoute } from '@react-navigation/core';
+import { CarDTO } from '../dtos/CarsDtos';
+
+interface Params {
+    car: CarDTO
+}
+
 
 export default function CarDetailsScreen(){
 
 const navigation = useNavigation();
+const route = useRoute();
+const { car } = route.params as Params;
 
 function handleConfirmRental(){
     navigation.navigate('Schedule')
 }
 
+function handleGoBack(){
+    navigation.goBack();
+}
+
 return (
 <Container>
     <Header>
-        <BackButton onPress={ () => {}} />
+        <BackButton onPress={handleGoBack} />
     </Header>
 
     <CarImage>
     <ImageSlider 
-        imagesUrl={['https://png.monster/wp-content/uploads/2020/11/2018-audi-rs5-4wd-coupe-angular-front-5039562b.png',]}
+        imagesUrl={car.photos}
     />
     </CarImage>
 
     <Content>
         <Details>
         <Description>
-            <Brand>Audi</Brand>
-            <Name>5S Coupe</Name>
+            <Brand>{car.brand}</Brand>
+            <Name>{car.name}</Name>
         </Description>
 
         <Rent>
             <Period>Ao dia</Period>
-            <Price>R$ 500</Price>
+            <Price>{`R$ ${car.rent.price}`}</Price>
         </Rent>
         </Details>
 
         <Acessories>
-            <Acessory name='380 km/h' icon={SpeedSvg} />
-            <Acessory name='3,2s' icon={AccelerationSvg} />
-            <Acessory name='800 HP' icon={ForceSvg} />
-            <Acessory name='Gasolina' icon={GasolineSvg} />
-            <Acessory name='Auto' icon={ExchangeSvg} />
-            <Acessory name='2 pessoas' icon={PeopleSvg} />
+            { car.accessories.map( (accessory) => (
+                <Acessory 
+                key={accessory.type}
+                name={accessory.name}
+                icon={SpeedSvg} />
+
+            ))}
+ 
         </Acessories>
 
-        <About>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nisi non vel, 
-            hic totam commodi debitis aperiam id eaque cum unde magnam itaque, quibusdam 
-            corporis odit numquam in ipsa tempore!
-        </About>
+        <About>{car.about}</About>
 
     </Content>
 
