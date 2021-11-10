@@ -16,19 +16,13 @@ Acessories,
 Footer,
 } from './CarDetailsScreenStyle'
 
-import SpeedSvg from '../assets/speed.svg'
-import AccelerationSvg from '../assets/acceleration.svg'
-import ForceSvg from '../assets/force.svg'
-import GasolineSvg from '../assets/gasoline.svg'
-import ExchangeSvg from '../assets/exchange.svg'
-import PeopleSvg from '../assets/people.svg'
-
 import BackButton from '../Components/BackButton';
 import ImageSlider from '../Components/ImageSlider';
 import Acessory from '../Components/Acessory';
 import Button from '../Components/Button';
 import { useNavigation, useRoute } from '@react-navigation/core';
 import { CarDTO } from '../dtos/CarsDtos';
+import getAccessoryIcon from '../utils/getAccessoryIcon';
 
 interface Params {
     car: CarDTO
@@ -79,7 +73,7 @@ return (
                 <Acessory 
                 key={accessory.type}
                 name={accessory.name}
-                icon={SpeedSvg} />
+                icon={getAccessoryIcon(accessory.type)} />
 
             ))}
  
