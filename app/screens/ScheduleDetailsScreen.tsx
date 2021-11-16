@@ -48,10 +48,14 @@ function handleConfirmRental(){
     navigation.navigate('ScheduleComplete')
 }
 
+function handleGoBack(){
+    navigation.goBack();
+}
+
 return (
 <Container>
     <Header>
-        <BackButton onPress={ () => {}} />
+        <BackButton onPress={ handleGoBack} />
     </Header>
 
     <CarImage>
