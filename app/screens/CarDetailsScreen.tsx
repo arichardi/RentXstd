@@ -36,7 +36,7 @@ const route = useRoute();
 const { car } = route.params as Params;
 
 function handleConfirmRental(){
-    navigation.navigate('Schedule')
+    navigation.navigate('Schedule', {car})
 }
 
 function handleGoBack(){
