@@ -16,17 +16,20 @@ Footer,
 import ArrowSvg from '../assets/arrow.svg'
 import Button from '../Components/Button';
 import Calendar, { MarkedDatesProps } from '../Components/Calendar'
-import { useNavigation } from '@react-navigation/core';
+import { useNavigation, useRoute } from '@react-navigation/core';
 import { DayProps } from '../Components/Calendar'
 import generateInterval from '../utils/generateInterval';
 import { format } from 'date-fns';
 import getPlatformDate from '../utils/getPlatformDate';
+import { CarDTO } from '../dtos/CarsDtos';
 
 interface RentalPeriod {
-    start: number;
     startFormatted: string;
-    end: number;
     endFormatted: string;
+}
+
+interface Params {
+    car: CarDTO
 }
 
 export default function ScheduleScreen(){
@@ -39,7 +42,7 @@ export default function ScheduleScreen(){
     const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod)
 
     function handleConfirmRental(){
-        if(!rentalPeriod.start || !rentalPeriod.end){
+        if(!rentalPeriod.startFormatted || !rentalPeriod.endFormatted){
             Alert.alert('Selecione o intervado de aluguel')
         }else{
             navigation.navigate('ScheduleDetails', {
@@ -71,8 +74,6 @@ export default function ScheduleScreen(){
         const lastDate = Object.keys(interval)[Object.keys(interval).length -1] 
 
         setRentalPeriod({
-            start: start.timestamp,
-            end: end.timestamp,
             startFormatted: format(getPlatformDate(new Date(firstDate)), 'dd/MM/yyyy'),
             endFormatted: format(getPlatformDate(new Date(lastDate)), 'dd/MM/yyyy')
 

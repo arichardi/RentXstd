@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { StatusBar } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/core'
 import { RFValue } from 'react-native-responsive-fontsize'
 import {
@@ -8,6 +9,7 @@ import {
     TotalCars,
     HeaderContent,
     CarList,
+    MyCarsButton,
 } from './HomeScreenStyle'
 import Car from '../Components/Car'
 
@@ -15,6 +17,7 @@ import Logo from '../assets/logo.svg'
 import api from '../services/api'
 import { CarDTO } from '../dtos/CarsDtos'
 import Load from '../Components/Load'
+import theme from '../Styles/theme'
 
 export default function HomeScreen(){
 
@@ -45,6 +48,10 @@ export default function HomeScreen(){
         navigation.navigate('CarDetails', { car })
     }
 
+    function handleOpenMyCars(){
+        navigation.navigate('MyCars');
+    }
+
     return (
         <Container>
             <StatusBar 
@@ -73,6 +80,14 @@ export default function HomeScreen(){
                 />}
             />
             }
+
+            <MyCarsButton onPress={handleOpenMyCars}>
+                <Ionicons 
+                    name='ios-car-sport'
+                    size={32}
+                    color={theme.colors.shape}
+                />
+            </MyCarsButton>
 
         </Container>
         )
