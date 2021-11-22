@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Alert, StatusBar } from 'react-native'; 
+import { StatusBar } from 'react-native'; 
 import BackButton from '../Components/BackButton';
 import theme from '../Styles/theme';
 import {
@@ -42,14 +42,12 @@ export default function ScheduleScreen(){
     const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod)
 
     function handleConfirmRental(){
-        if(!rentalPeriod.startFormatted || !rentalPeriod.endFormatted){
-            Alert.alert('Selecione o intervado de aluguel')
-        }else{
-            navigation.navigate('ScheduleDetails', {
-                car,
-                dates: Object.keys(markedDates)
-            })
-        }
+
+        navigation.navigate('ScheduleDetails', {
+            car,
+            dates: Object.keys(markedDates)
+        })
+        
     }
     
     
@@ -122,6 +120,7 @@ return (
         <Button 
             title='Escolher período do aluguel'
             onPress={handleConfirmRental}
+            enabled={!!rentalPeriod.startFormatted}
         />
     </Footer>
 </Container>
