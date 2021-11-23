@@ -6,13 +6,15 @@ import ScheduleScreen from '../screens/ScheduleScreen'
 import ScheduleDetailsScreen from '../screens/ScheduleDetailsScreen'
 import ScheduleCompleteScreen from '../screens/ScheduleCompleteScreen'
 import MyCars from '../screens/MyCarsScreen';
+import SignInScreen from '../screens/SignInScreen';
 
 
 const { Navigator, Screen} = createNativeStackNavigator();
 
 export function StackRoutes(){
     return(
-        <Navigator screenOptions={{ headerShown: false}}>
+        <Navigator screenOptions={{ headerShown: false}} initialRouteName='SignIn'>
+            <Screen name='SignIn' component={SignInScreen} />
             <Screen name='Home' component={HomeScreen} />
             <Screen name='CarDetails' component={CarDetailsScreen} />
             <Screen name='Schedule' component={ScheduleScreen} />
