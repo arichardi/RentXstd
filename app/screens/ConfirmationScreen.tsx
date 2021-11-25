@@ -6,22 +6,32 @@ Content,
 Title,
 Message,
 Footer,
-} from './ScheduleCompleteScreenStyle'
+} from './ConfirmationScreenStyle'
 
 import LogoSVG from '../assets/logo_background_gray.svg'
 import DoneSVG from '../assets/done.svg'
 import ConfirmButton from '../Components/ConfirmButton';
 import { StatusBar } from 'expo-status-bar';
-import { useNavigation } from '@react-navigation/core';
+import { useNavigation, useRoute } from '@react-navigation/core';
 
-export default function ScheduleCompleteScreen(){
+interface Params {
+    title: string;
+    message: string;
+    nextScreenRoute: string;
+}
+
+
+export default function ConfirmationScreen(){
 
     const { width } = useWindowDimensions();
 
     const navigation = useNavigation();
+    const route = useRoute();
+
+    const {title, message, nextScreenRoute} = route.params as Params
 
     function handleConfirmHandle(){
-        navigation.navigate('Home')
+        navigation.navigate(nextScreenRoute)
     }
 
 return (
@@ -40,13 +50,9 @@ return (
             width={80}
             height={80}
         />
-        <Title>Carro Alugado!</Title>
+        <Title>{title}</Title>
 
-        <Message>
-            Agora você só precisa ir {`\n`}
-            até uma concessionária da RentX {`\n`}
-            pegar o seu carro.
-        </Message>
+        <Message>{message}</Message>
 
         <Footer>
             <ConfirmButton title='OK' onPress={handleConfirmHandle}/>

@@ -81,7 +81,11 @@ async function handleConfirmRental(){
         id: car.id,
         unavailable_dates: unavailableDates
     })
-    .then( () => navigation.navigate('ScheduleComplete'))
+    .then( () => navigation.navigate('Confirmation', {
+        nextScreenRoute: 'Home',
+        title: 'Carro alugado!',
+        message: `Agora você só precisa ir\n até uma concessionária RentX\n pegar o seu carro`
+    }))
     .catch( () => {
         Alert.alert('Não foi possivel confirmar o agendamento')
         setLoading(false)
