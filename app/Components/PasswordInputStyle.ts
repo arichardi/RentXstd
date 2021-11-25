@@ -3,16 +3,13 @@ import styled, { css } from 'styled-components/native'
 import { TextInput } from 'react-native'
 import { BorderlessButton } from 'react-native-gesture-handler';
 
-interface ContainerProps{
+interface Props{
     isOnFocus: boolean;
 }
 
-export const Container = styled.View<ContainerProps>`
+export const Container = styled.View`
     flex-direction: row;
-    ${ ({theme, isOnFocus}) => isOnFocus && css`
-        border-bottom-width: 2px;
-        border-bottom-color: ${ ({theme}) => theme.colors.main};
-    `}
+
 `;
 export const IconContainer = styled.View`
     height: 56px;
@@ -22,13 +19,18 @@ export const IconContainer = styled.View`
     background-color: ${ ({theme}) => theme.colors.background_secondary};  
     margin-right: 4px;
 `;
-export const InputText = styled(TextInput)`
+export const InputText = styled(TextInput)<Props>`
     background-color: ${ ({theme}) => theme.colors.background_secondary};
     color: ${ ({theme}) => theme.colors.text};
     font-family: ${ ({theme}) => theme.fonts.primary400};
     font-size: ${RFValue(15)}px;
     padding: 0px 16px;
     flex: 1;
+
+    ${ ({isOnFocus}) => isOnFocus && css`
+        border-bottom-width: 2px;
+        border-bottom-color: ${ ({theme}) => theme.colors.main};
+    `}
 `;
 export const ChangePasswordVisibilityButton = styled(BorderlessButton)`
 

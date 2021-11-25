@@ -28,7 +28,7 @@ export default function Input({ iconName, value,  ...rest }: InputProps){
     };
 
     return (
-        <Container isOnFocus={isOnFocus} >
+        <Container>
             <IconContainer>
                 <Feather 
                     name={iconName}
@@ -39,6 +39,7 @@ export default function Input({ iconName, value,  ...rest }: InputProps){
             <InputText 
                 onFocus={handleInputOnFocus}
                 onBlur={handleInputOnBlur}
+                isOnFocus={isOnFocus}
             
             {...rest}/>
         </Container>
